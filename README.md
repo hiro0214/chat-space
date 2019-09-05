@@ -14,6 +14,7 @@
 
 ## messagesテーブル
 |Column|Type|Options|
+|------|----|-------|
 |user_id|integer|null: false, foreign_key: true|
 |group_id|integer|null: false, foreign_key: true|
 
@@ -24,6 +25,7 @@
 
 ## groupテーブル
 |Column|Type|Options|
+|------|----|-------|
 |group_name|string|null: false|
 |messages_id|integer|null: false, foreign_key: true|
 |user_group_id|integer|null: false, foreign_key: true|
@@ -33,8 +35,9 @@
 - has_many :users, through: :user_groups
 
 
-##user_groupsテーブル
+## user_groupsテーブル
 |Column|Type|Options|
+|------|----|-------|
 |user_id|integer|null: false, foreign_key: true|
 |group_id|integer|null: false, foreign_key: true|
 

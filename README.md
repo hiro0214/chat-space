@@ -13,7 +13,7 @@
 
 
 ## messagesテーブル
-|Colum|Type|Options|
+|Column|Type|Options|
 |user_id|integer|null: false, foreign_key: true|
 |group_id|integer|null: false, foreign_key: true|
 
@@ -23,21 +23,21 @@
 
 
 ## groupテーブル
-|Colum|Type|Options|
+|Column|Type|Options|
 |group_name|string|null: false|
 |messages_id|integer|null: false, foreign_key: true|
 |user_group_id|integer|null: false, foreign_key: true|
 
 ### Association
--has_many :messages
--has_many :users, through: :user_groups
+- has_many :messages
+- has_many :users, through: :user_groups
 
 
 ##user_groupsテーブル
-|Colum|Type|Options|
+|Column|Type|Options|
 |user_id|integer|null: false, foreign_key: true|
 |group_id|integer|null: false, foreign_key: true|
 
 ### Association
--belongs_to :user
--belongs_to :group
+- belongs_to :user
+- belongs_to :group

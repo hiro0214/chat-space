@@ -9,13 +9,17 @@
 
 ### Association
 - has_many :messages
-- has_many :groups, through: :user_groups
+- has_many :users_groups
+- has_many :groups, through: :users_groups
 
 
 ## messagesテーブル
 |Column|Type|Options|
+|------|----|-------|
 |user_id|integer|null: false, foreign_key: true|
 |group_id|integer|null: false, foreign_key: true|
+|body|text||
+|image|string||
 
 ### Association
 - belongs_to :user
@@ -24,17 +28,18 @@
 
 ## groupテーブル
 |Column|Type|Options|
-|group_name|string|null: false|
-|messages_id|integer|null: false, foreign_key: true|
-|user_group_id|integer|null: false, foreign_key: true|
+|------|----|-------|
+|name|string|null: false|
 
 ### Association
 - has_many :messages
-- has_many :users, through: :user_groups
+- has_many :users_groups
+- has_many :users, through: :users_groups
 
 
-##user_groupsテーブル
+## users_groupsテーブル
 |Column|Type|Options|
+|------|----|-------|
 |user_id|integer|null: false, foreign_key: true|
 |group_id|integer|null: false, foreign_key: true|
 

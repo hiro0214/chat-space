@@ -1,0 +1,160 @@
+* {
+  box-sizing: border-box;
+}
+
+.contents {
+  width:100vw;
+}
+
+.side {
+  width:300px;
+  color: $side-color;
+  float:left;
+  font-weight:bold;
+  &_name {
+    height:100px;
+    background-color:#253141;
+    font-size:16px;
+    display:flex;
+    line-height:100px;
+    padding: 0 20px;
+  }
+  &_icon1 {
+    position:absolute;
+    top:40px;
+    left:250px;
+    color:white;
+    cursor:pointer;
+  }
+  &_icon2 {
+    position:absolute;
+    top:40px;
+    left:270px;
+    color:white;
+    cursor:pointer;
+  }
+  &_groups {
+    width:300px;
+    height:calc(100vh - 100px);
+    padding:20px 20px 0;
+    background-color:#2f3e51;
+    overflow: scroll;
+    &::-webkit-scrollbar {
+      display:none;
+    }
+  }
+}
+  
+.group {
+  margin-bottom:40px;
+  &_name {
+    font-size:15px;
+  }
+  &_message {
+    font-size:11px;
+  }
+}
+  
+.main {
+  width: calc(100vw - 300px);
+  height:100vh;
+  float:left;
+  &_header {
+    height:100px;
+    padding:0 40px;
+    display:flex;
+    border-bottom: solid 1px #eee;
+  }
+}
+
+.header {
+  margin-top:35px;
+  &_current {
+    margin-bottom:15px;
+    color:#333333;
+  }
+  &_member {
+    font-size:12px;
+    color: $data-color;
+  }
+}
+
+.edit {
+  height:40px;
+  line-height:40px;
+  margin-top:30px;
+  padding:0 20px;
+  position:absolute;
+  right:40px;
+  color: $submit-color;
+  border:solid 1px $submit-color;
+  text-decoration:none;
+}
+
+.message {
+  height: calc(100vh - 190px);
+  padding:46px 40px;
+  background-color:#fafafa;
+  overflow:scroll;
+  &::-webkit-scrollbar {
+    display:none;
+  }
+  &_lists {
+    padding-bottom:40px;
+  }
+  &_info {
+    margin-bottom:10px;
+    display:flex;
+  } 
+  &_name {
+    font-size:16px;
+    color: $message-color;
+    font-weight:bold;
+  }
+  &_data {
+    font-size:12px;
+    padding-left:10px;
+    color: $data-color;
+  }
+  &_text {
+    color: $message-color;
+    font-size:14px;
+    margin-bottom:10px;
+  }
+}
+  
+.form {
+    height:90px;
+    background-color:#ddd;
+  padding:20px 40px;
+  font-size:16px;
+  &_list {
+    height:50px;
+    display:flex;
+    line-height:50px;
+  }
+  &_icon {
+    position: relative;
+    right:25px;
+    cursor:pointer;
+  }
+  &_message {
+    width:100%;
+    position:relative;
+    background-color:white;
+    padding-left:10px;
+    color: $message-color;
+  }
+  &_image {
+    display:none;
+  }
+  &_send {
+    width:100px;
+    height:50px;
+    padding:0 30px;
+    margin-left:15px;
+    background-color: $submit-color;
+    color:white;
+    cursor:pointer;
+  }
+}

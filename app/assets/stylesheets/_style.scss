@@ -10,7 +10,6 @@
   width:300px;
   color: $side-color;
   float:left;
-  font-weight:bold;
   &_name {
     height:100px;
     background-color:#253141;
@@ -18,6 +17,7 @@
     display:flex;
     line-height:100px;
     padding: 0 20px;
+    font-weight:bold;
   }
   &_icon1 {
     position:absolute;
@@ -47,11 +47,17 @@
   
 .group {
   margin-bottom:40px;
-  &_name {
+  text-decoration: none;
+  &__name {
+    color:white;
     font-size:15px;
   }
-  &_message {
+  &__message {
+    color:white;
     font-size:11px;
+    margin-top: 5px;
+    margin-bottom:40px;
+
   }
 }
   
@@ -116,7 +122,7 @@
     padding-left:10px;
     color: $data-color;
   }
-  &_text {
+  &_comment {
     color: $message-color;
     font-size:14px;
     margin-bottom:10px;
@@ -124,13 +130,13 @@
 }
   
 .form {
-    height:90px;
-    background-color:#ddd;
+  height:90px;
+  background-color:#ddd;
   padding:20px 40px;
   font-size:16px;
   &_list {
     height:50px;
-    display:flex;
+    // display:flex;
     line-height:50px;
   }
   &_icon {
@@ -157,4 +163,9 @@
     color:white;
     cursor:pointer;
   }
+}
+
+.new_message {
+  width: 100%;
+  display: flex;
 }

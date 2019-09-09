@@ -4,30 +4,20 @@
   %body
     .contents
       .side
-        %p.side_name ユーザー 
-        =link_to "http://google.com", class: "side_icon1" do
-          =fa_icon "pencil-square"
-        =link_to "http://google.com", class: "side_icon2" do
+        %p.side_name
+          =current_user.name
+        =link_to new_group_path, class: "side_icon1" do
+          =fa_icon "pencil-square-o"
+        =link_to edit_user_path(current_user), method: :get, class: "side_icon2" do
           =fa_icon "cog" 
         .side_groups
-          .group 
-            %p.group_name グループ名1
-            %p.group_message コメント
-          .group 
-            %p.group_name グループ名2
-            %p.group_message コメント
-          .group 
-            %p.group_name グループ名3
-            %p.group_message コメント
-          .group 
-            %p.group_name グループ名4
-            %p.group_message コメント
-          .group 
-            %p.group_name グループ名5
-            %p.group_message コメント
-          .group 
-            %p.group_name グループ名6
-            %p.group_message コメント
+          - current_user.groups.each do |group|
+            .group
+              = link_to group_messages_path(group) do
+                .group__name
+                  = group.name
+                .group__message
+                  = group.show_last_message
 
       .main
         .main_header
@@ -37,36 +27,14 @@
           =link_to "Edit", "http://google.com", class: "edit"
 
         .message
-          .message_lists
-            .message_info
-              %p.message_name ユーザー
-              %p.message_data 2019/09/06(金) 12:34
-            %p.message_text コメント
-          .message_lists
-            .message_info
-              %p.message_name ユーザー
-              %p.message_data 2019/09/06(金) 12:34
-            %p.message_text コメント
-          .message_lists
-            .message_info
-              %p.message_name ユーザー
-              %p.message_data 2019/09/06(金) 12:34
-            %p.message_text コメント
-          .message_lists
-            .message_info
-              %p.message_name ユーザー
-              %p.message_data 2019/09/06(金) 12:34
-            %p.message_text コメント
-          .message_lists
-            .message_info
-              %p.message_name ユーザー
-              %p.message_data 2019/09/06(金) 12:34
-            %p.message_text コメント
+          = render @messages
 
         .form
           .form_list
-            %form{method: "post"}
-            %input.form_message{type: "text", placeholder: "type a message"}
-              %label.form_icon{for: "image"}
-                %input#image.form_image{type: "file"} <i class="fa fa-photo "></i>
-            %input.form_send{type: "submit" ,value: "Send"} 
+            = form_for [@group, @message] do |f|
+              = f.text_field :content, class: 'form_message', placeholder: 'type a message'
+              .form_icons
+                = f.label :image, class: '' do
+                  = fa_icon 'picture-o', class: "form_icon"
+                  = f.file_field :image, class: "form_image"
+              = f.submit "Send" ,class: 'form_send'

@@ -22,8 +22,12 @@
       .main
         .main_header
           .header 
-            %p.header_current 現在のグループ
-            %p.header_member Member : ユーザー
+            %p.header_current
+              = @group_name
+              -# = current_user.groups.name
+            .header_member 
+              %p Member : 
+              = current_user.name   #@memberのeach文でグループメンバーの取り出し
           =link_to "Edit", "http://google.com", class: "edit"
 
         .message

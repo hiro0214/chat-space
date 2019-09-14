@@ -1,5 +1,9 @@
 $(function(){
-  function text(message){
+  function buildHTML(message){
+    var img = ""
+    if (message.image.url !== null){
+        img = `<img src="${message.image.url}">`
+    }
     var html =`<div class="message_lists">
                 <div class="message_info">
                   <p class="message_name">${message.name}</p>
@@ -7,26 +11,12 @@ $(function(){
                   </div>
                 <div class="message_comment">
                   ${message.content}
+                  ${img}
                 </div>
               </div>`
 
     return html;
   }
-  function text_image(message){
-    var html =`<div class="message_lists">
-                <div class="message_info">
-                  <p class="message_name">${message.name}</p>
-                  <p class="message_data">${message.data}</p>
-                </div>
-                <div class="message_comment">
-                ${message.content}<br>
-                <img src = "${message.image.url}">
-                </div>
-              </div>`
-
-    return html;
-  }
-
 
   $("form").submit(function(e){
     e.preventDefault();
@@ -41,10 +31,7 @@ $(function(){
       contentType: false
     })
     .done(function(data){
-      if (data.image.url == null){
-        var html = text(data);
-      }else
-        var html = text_image(data);
+        var html = buildHTML(data);
      $(".message").append(html)
      $(".form_message").val('')
      $(".form_image").val('')

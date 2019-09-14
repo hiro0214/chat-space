@@ -24,10 +24,9 @@
           .header 
             %p.header_current
               = @group_name
-              -# = current_user.groups.name
             .header_member 
               %p Member : 
-              = current_user.name   #@memberのeach文でグループメンバーの取り出し
+              = current_user.name   
           =link_to "Edit", "http://google.com", class: "edit"
 
         .message
@@ -41,4 +40,4 @@
                 = f.label :image, class: '' do
                   = fa_icon 'picture-o', class: "form_icon"
                   = f.file_field :image, class: "form_image"
-              = f.submit "Send" ,class: 'form_send'
+              = f.button "Send" , class: "form_send"

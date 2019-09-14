@@ -33,8 +33,7 @@ $(function(){
     .done(function(data){
         var html = buildHTML(data);
      $(".message").append(html)
-     $(".form_message").val('')
-     $(".form_image").val('')
+     $("form")[0].reset();
      $(".message").animate({scrollTop: $(".message")[0].scrollHeight} , 0);
     })
     .fail(function(){

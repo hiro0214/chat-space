@@ -16,10 +16,10 @@ $(function(){
     return html;
   }
 
-  $("form").submit(function(e){
+  $("#new_message").on("submit",function(e){
     e.preventDefault();
     var formData = new FormData(this);
-    var url = $(this).attr("action")
+    var url = $(this).attr("action");
     $.ajax({
       url: url,
       type: "POST",
@@ -30,12 +30,12 @@ $(function(){
     })
     .done(function(data){
         var html = buildHTML(data);
-     $(".message").append(html)
+     $(".message").append(html);
      $("form")[0].reset();
      $(".message").animate({scrollTop: $(".message")[0].scrollHeight} , 0);
     })
     .fail(function(){
-      alert("error");
+      alert("メッセージを入力してください");
     })
   });
 });

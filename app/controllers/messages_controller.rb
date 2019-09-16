@@ -16,6 +16,7 @@ class MessagesController < ApplicationController
       end
       else
        @messages = @group.messages.includes(:user)
+       render :index
     end
  end
 

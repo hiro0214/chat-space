@@ -1,5 +1,4 @@
 $(document).on('turbolinks:load', function(){
-
   function buildHTML(message){
     var img = (message.image.url !== null) ? `<img src="${message.image.url}">` : "";
     var html =`<div class="message_lists">
@@ -53,7 +52,7 @@ $(document).on('turbolinks:load', function(){
     .done(function(messages) {
       var insertHTML = "";
       messages.forEach(function(message){
-        insertHTML = buildHTML(message)
+        insertHTML += buildHTML(message)
         $(".message").append(insertHTML);
         $(".message").animate({scrollTop: $(".message")[0].scrollHeight} , 0);
       })
@@ -63,5 +62,6 @@ $(document).on('turbolinks:load', function(){
     });
     };
   }
+  
   setInterval(reloadMessages, 5000);
 });

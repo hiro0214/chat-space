@@ -1,4 +1,4 @@
-$(function(){
+$(document).on('turbolinks:load', function(){
 
   const searchResult = $("#user-search-result");
 

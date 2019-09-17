@@ -6,7 +6,7 @@ shared_path = File.expand_path('../../../shared/', __FILE__)
 worker_processes 1
 
 #アプリケーションの設置されているディレクトリを指定
-working_directory "#{app_path}"
+working_directory "#{app_path}/current"
 pid "#{app_path}/tmp/pids/unicorn.pid"
 listen "#{app_path}/tmp/sockets/unicorn.sock"
 stderr_path "#{app_path}/log/unicorn.stderr.log"

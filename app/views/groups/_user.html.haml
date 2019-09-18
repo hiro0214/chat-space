@@ -1,22 +1,6 @@
-%li.list
-  = user.name
-  %button.chat-group-user__remove{type: "button"} 削除
-  = hidden_field_tag('group[user_ids][]', user.id)
-
-
-
-
-
-
-
-
-
--# #chat-group-users
--#   .chat-group-user.clearfix.js-chat-member
--#     %li.list
--#       = user.name
--#       %a.user-search-remove.chat-group-user__btn.chat-group-user__btn--remove.js-remove-btn{type: "button"} 削除
--#       = hidden_field_tag('group[user_ids][]', user.id)
-
-
--# .exclude?(current_user)
+#chat-group-users
+  .chat-group-user.clearfix.js-chat-member
+    %li.list
+      = user.name
+      %a.user-search-remove.chat-group-user__btn.chat-group-user__btn--remove.js-remove-btn{type: "button"} 削除
+      = hidden_field_tag('group[user_ids][]', user.id)

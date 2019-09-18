@@ -22,13 +22,14 @@
     .chat-group-form__field--left
       %label.chat-group-form__label{for: "members"} チャットメンバー
     .chat-group-form__field--right
-      #chat-group-users.js-add-user 
+      .chat-group-users.js-add-user 
         .chat-group-user.clearfix.js-chat-member
           %input{name: "group[user_ids][]",type: "hidden"}
           .chat-group-user__name
             = current_user.name
-
-            
+        .member_list
+          = render partial: "groups/user", collection: @group.users.where.not(id: current_user)
+          
   .chat-group-form__field.clearfix
     .chat-group-form__field--left
     .chat-group-form__field--right

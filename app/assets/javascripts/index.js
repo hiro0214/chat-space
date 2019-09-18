@@ -1,7 +1,7 @@
 $(document).on('turbolinks:load', function(){
   function buildHTML(message){
     var img = (message.image.url !== null) ? `<img src="${message.image.url}">` : "";
-    var html =`<div class="message_lists">
+    var html =`<div class="message_lists" data-message-id=${message.id}>
                 <div class="message_info">
                   <p class="message_name">${message.name}</p>
                   <p class="message_data">${message.data}</p>
@@ -30,7 +30,7 @@ $(document).on('turbolinks:load', function(){
         var html = buildHTML(data);
      $(".message").append(html);
      $("form")[0].reset();
-     $(".message").animate({scrollTop: $(".message")[0].scrollHeight} , 0);
+     $(".message").animate({scrollTop: $(".message")[0].scrollHeight} , 200);
     })
     .fail(function(){
       alert("メッセージを入力してください");
@@ -42,19 +42,21 @@ $(document).on('turbolinks:load', function(){
 
   var reloadMessages = function() {
     if (window.location.href.match(/\/groups\/\d+\/messages/)){
-    var last_message_id = $(".message_lists").data("message-id");
-    $.ajax({
-      url: "api/messages",
-      type: 'get',
-      dataType: 'json',
-      data: {id: last_message_id}
-    })
+    last_message_id = $(".message_lists:last").data("message-id");
+      $.ajax({
+        url: "api/messages",
+        type: 'get',
+        dataType: 'json',
+        data: {id: last_message_id}
+      })
     .done(function(messages) {
       var insertHTML = "";
       messages.forEach(function(message){
         insertHTML += buildHTML(message)
+        if (message.id > last_message_id ){
         $(".message").append(insertHTML);
-        $(".message").animate({scrollTop: $(".message")[0].scrollHeight} , 0);
+        $(".message").animate({scrollTop: $(".message")[0].scrollHeight} , 200);
+      }
       })
     })
     .fail(function() {

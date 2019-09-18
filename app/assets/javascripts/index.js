@@ -13,7 +13,6 @@ $(document).on('turbolinks:load', function(){
               </div>`
     return html;
   }
-
   $("#new_message").on("submit",function(e){
     e.preventDefault();
     var formData = new FormData(this);
@@ -27,7 +26,8 @@ $(document).on('turbolinks:load', function(){
       contentType: false
     })
     .done(function(data){
-        var html = buildHTML(data);
+      console.log(data)
+     var html = buildHTML(data);
      $(".message").append(html);
      $("form")[0].reset();
      $(".message").animate({scrollTop: $(".message")[0].scrollHeight} , 200);
@@ -52,7 +52,7 @@ $(document).on('turbolinks:load', function(){
     .done(function(messages) {
       var insertHTML = "";
       messages.forEach(function(message){
-        insertHTML += buildHTML(message)
+        insertHTML = buildHTML(message)
         if (message.id > last_message_id ){
         $(".message").append(insertHTML);
         $(".message").animate({scrollTop: $(".message")[0].scrollHeight} , 200);
